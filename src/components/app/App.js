@@ -10,6 +10,7 @@ function App() {
 	 		</section>
 	 		<div className="body">
 	 			<Changer />
+        <NewChanger />
 	 		</div>
 		</>
   );
