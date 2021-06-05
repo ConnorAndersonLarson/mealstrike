@@ -11,15 +11,15 @@ const Changer = ( { createSentence, inputType } ) => {
     setNewSentence(createSentence(event.target.value))
   }
 
-  const clearInputs = event => {
-    event.preventDefault();
+  const clearInputs = e => {
+    e.preventDefault();
     setSentence('');
     setNewSentence('');
     setError('');
   }
 
-  const copySentence = event => {
-    event.preventDefault()
+  const copySentence = e => {
+    e.preventDefault();
     navigator.clipboard.writeText(newSentence)
   }
 
@@ -35,10 +35,10 @@ const Changer = ( { createSentence, inputType } ) => {
         <section className="return">
         {!!newSentence && newSentence}
         </section>
-        <button id="copyText" onClick={ () => this.copySentence()}>
+        <button id="copyText" onClick={ event => copySentence(event)}>
           Copy {inputType}!
         </button>
-        <button id="clear" onClick={ () => this.clearInputs()}>
+        <button id="clear" onClick={ event => clearInputs(event)}>
         Clear
         </button>
       </form>
