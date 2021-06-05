@@ -30,7 +30,7 @@ const Changer = ( { createSentence, inputType } ) => {
           placeholder={`Your ${inputType}`}
           name='sentence'
           value={sentence}
-          onChange={e => this.addSentence(e)}
+          onChange={e => addSentence(e)}
         />
         <section className="return">
         {!!newSentence && newSentence}
