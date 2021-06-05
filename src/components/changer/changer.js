@@ -1,79 +1,49 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 import './changer.css'
 
-class Changer extends Component {
-  constructor() {
-    super();
-    this.state = {
-      sentence: '',
-      newSentence: '',
-      error: ''
-    }
+const Changer = ( { createSentence, inputType } ) => {
+  const [sentence, setSentence] = useState('');
+  const [newSentence, setNewSentence] = useState('');
+  const [error, setError] = useState('');
+
+  const addSentence = event => {
+    setSentence(event.target.value);
+    setNewSentence(createSentence(event.target.value))
   }
 
-  handleSubmit = e => {
-    e.preventDefault()
-    if (!!this.state.sentence) {
-      this.createSentence(this.state.sentence)
-      this.clearInputs()
-    }
+  const clearInputs = event => {
+    event.preventDefault();
+    setSentence('');
+    setNewSentence('');
+    setError('');
   }
 
-  addSentence = event => {
-    this.setState({ [event.target.name]: event.target.value});
-    this.createSentence(event.target.value)
-  }
-
-  createSentence = (sent) => {
-    let count = 0;
-    let ns = sent.toLowerCase().split(' ').reduce((acc, word) => {
-      let newWord = word.split('').map(letter => {
-        if (count % 2 !== 0 && letter / 1 !== undefined) {
-          count++
-          return letter.toUpperCase()
-        } else {
-          count++
-          return letter
-        }
-      })
-      return `${acc} ${newWord.join('')}`
-    }, '')
-    this.setState({newSentence: ns})
-  }
-
-  clearInputs = e => {
-    e.preventDefault()
-    this.setState({sentence: '', newSentence: '', error: ''});
-  }
-
-  copySentence = event => {
+  const copySentence = event => {
     event.preventDefault()
-    navigator.clipboard.writeText(this.state.newSentence)
+    navigator.clipboard.writeText(newSentence)
   }
 
-  render() {
     return (
       <form>
         <input
           type='text'
-          placeholder='Your sentence'
+          placeholder={`Your ${inputType}`}
           name='sentence'
-          value={this.state.sentence}
+          value={sentence}
           onChange={e => this.addSentence(e)}
         />
         <section className="return">
-        {!!this.state.newSentence && this.state.newSentence}
+        {!!newSentence && newSentence}
         </section>
-        <button id="copyText" onClick={e => this.copySentence(e)}>
-          Copy Sentence!
+        <button id="copyText" onClick={ () => this.copySentence()}>
+          Copy {inputType}!
         </button>
-        <button id="clear" onClick={e => this.clearInputs(e)}>
+        <button id="clear" onClick={ () => this.clearInputs()}>
         Clear
         </button>
       </form>
     )
   }
 
-}
 
 export default Changer;
