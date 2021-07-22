@@ -1,11 +1,13 @@
-language: node_js
+{
+  language: node_js
 
-node_js:
-  - "node"
+  node_js:
+    - "node"
 
-notifications:
-  email: false
+  notifications:
+    email: false
 
-script:
-  - npm test
-  - npm run build
+  script:
+    - npm test
+    - npm run build
+}

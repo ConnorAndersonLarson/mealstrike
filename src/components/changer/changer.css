@@ -1,27 +1,74 @@
 form {
   display:grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    "form return"
-    "form return"
-    "copy return"
-    "clear return"
+    "form form form"
+    "copy . clear"
+    "return return return";
+  border: 2px solid #f740e5;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 25px;
+  box-shadow:
+    0px 0px 2px 1px #ffd4fa,
+    0px 0px 5px 5px #f740e5,
+    inset 0px 0px 2px 1px #ffd4fa,
+    inset 0px 0px 5px 5px #f740e5;
 }
 
 input {
   grid-area: form;
+  background-color: black;
+  color: #f740e5;
+
 }
 
 .return {
   grid-area: return;
   text-align: center;
+  height: 21px;
+  color: #d539fc;
+}
+
+#copyText, #clear {
+  border-radius: 5px;
+  border: 1px solid #d539fc;
+  background-color: black;
+  color: #d539fc;
+  /* box-shadow:
+    0px 0px 1px 1px black,
+    0px 0px 2px 2px #d539fc,
+    inset 0px 0px 1px 1px black,
+    inset 0px 0px 2px 2px #d539fc; */
+  margin-top: 5px;
+  cursor: pointer;
 }
 
 #copyText {
   grid-area: copy;
 }
 
+#copyText:hover {
+  color: #24f953;
+  border: 1px solid #24f953;
+  box-shadow:
+    0px 0px 1px 1px black,
+    0px 0px 2px 2px #24f953,
+    inset 0px 0px 1px 1px black,
+    inset 0px 0px 2px 2px #24f953;
+}
+
 #clear {
   grid-area: clear;
+}
+
+#clear:hover{
+  color: #fb194f;
+  border: 1px solid #fb194f;
+  box-shadow:
+    0px 0px 1px 1px black,
+    0px 0px 2px 2px #fb194f,
+    inset 0px 0px 1px 1px black,
+    inset 0px 0px 2px 2px #fb194f;
 }

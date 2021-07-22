@@ -28,14 +28,16 @@ function App() {
   }
 
   return (
-		<>
+		<section className="app">
    		<section className="header">
 	 		</section>
-	 		<div className="body">
+	 		<div className="changers">
 	 			<Changer createSentence={createSentence} inputType={'Sentence'} />
         <Changer createSentence={createPhrase} inputType={'Phrase'} />
 	 		</div>
-		</>
+      <footer>
+      </footer>
+		</section>
   );
 }
 
