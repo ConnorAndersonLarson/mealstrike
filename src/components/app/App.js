@@ -6,7 +6,7 @@ import './App.css';
 function App() {
 
   const createPhrase = (sent) => {
-    let ns = sent.split('o').join('0').split('e').join('3').split('a').join('4').split('l').join('7').split(' ').join('_').split('i').join('1')
+    let ns = sent.split('o').join('0').split('e').join('3').split('a').join('4').split('l').join('7').split(' ').join('_')
     return `XoXo_${ns}_oXoX`;
   }
 
@@ -27,6 +27,11 @@ function App() {
     return ns
   }
 
+  const createSpaced = (sent) => {
+    let ns = sent.split('').join(' ')
+    return ` ${ns} `
+  }
+
   return (
 		<section className="app">
    		<section className="header">
@@ -34,6 +39,7 @@ function App() {
 	 		<div className="changers">
 	 			<Changer createSentence={createSentence} inputType={'Sentence'} />
         <Changer createSentence={createPhrase} inputType={'Phrase'} />
+        <Changer createSentence={createSpaced} inputType={'Word(s)'} />
 	 		</div>
       <footer>
       </footer>
